@@ -1,0 +1,22 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: probe-google-vision
+  namespace: default
+spec:
+  schedule: "*/1 * * * *"
+  concurrencyPolicy: "Forbid"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: probe-google-vision
+            image: xxx.dkr.ecr.eu-west-1.amazonaws.com/probe-google-vision:latest
+            imagePullPolicy: Always
+            resources:
+              requests:
+                cpu: 100m
+                memory: 50Mi

@@ -1,0 +1,5 @@
+cron:
+- description: "check latency from s3 and gcp every 1 minutes"
+  url: /call-google
+  schedule: every 1 minutes
+  target: prob-google-vision
